@@ -1,3 +1,7 @@
+<!--Jordan Smith
+    1/7/2019
+    jsmith.greenriverdev.com/328/cupcakes/
+    An order form for cupcakes-->
 <?php
 /**
  * Created by PhpStorm.
@@ -38,11 +42,11 @@ if (!empty($_POST))
         $validFlavors[] = $value;
 
     }
+
     //validate that one box is checked
     if(isset($_POST['flavors']))
     {
         $chosenFlavors = $_POST['flavors'];
-
         foreach ($chosenFlavors as $chosenFlavor)
         {
             if(!in_array($chosenFlavor, $validFlavors))
@@ -58,12 +62,15 @@ if (!empty($_POST))
         $isValid = false;
     }
 
+    //display order form if all is valid
     if($isValid)
     {
         $totalPrice = 0;
 
         echo "<h2>Thank you $name for your order!</h2>
                 <ul>Order Summary:";
+
+        //loop through flavors and add price for each cupcake
         foreach ($chosenFlavors as $flavor)
         {
             echo"<li>$flavor</li>";
@@ -72,9 +79,7 @@ if (!empty($_POST))
 
         echo"</ul><p>Order Total: $$totalPrice</p>";
     }
-
 }
-
 ?>
 
 <!doctype html>
@@ -95,7 +100,6 @@ if (!empty($_POST))
     <br>
 
     <?php
-
     //print checkboxes for all cupcake types
     foreach($flavors as $key => $value)
     {
@@ -105,10 +109,7 @@ if (!empty($_POST))
     }
 
     ?>
-
     <input type="submit" id="submit">
 </form>
-
-
 </body>
 </html>
