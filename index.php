@@ -10,6 +10,11 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+$name = "";
+$flavors = array("grasshopper" => "The Grasshopper", "maple" => "Whiskey Maple Bacon", "carrot" => "Carrot Walnut",
+    "caramel" => "Salted Caramel Cupcake", "velvet" => "Red Velvet", "lemon" => "Lemon Drop",
+    "tiramsu" => "Tiramisu");
+
 ?>
 
 <!doctype html>
@@ -26,20 +31,21 @@ error_reporting(E_ALL);
 
 <form id="cupcake-form" method="post" action="">
     <label>Name:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" value='<?php echo"$name"?>'>
     <br>
 
     <?php
-    $flavors = array("grasshopper" => "The Grasshopper", "maple" => "Whiskey Maple Bacon", "carrot" => "Carrot Walnut",
-        "caramel" => "Salted Caramel Cupcake", "velvet" => "Red Velvet", "lemon" => "Lemon Drop",
-        "tiramsu" => "Tiramisu");
 
+    //print checkboxes for all cupcake types
     foreach($flavors as $key => $value)
     {
         echo "<input type='checkbox' name='$key' value='$value' id='$key'>$value<br>";
     }
 
     ?>
+
+    <input type="submit" id="submit">
+
 </form>
 
 
